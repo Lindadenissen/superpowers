@@ -107,22 +107,22 @@ const superheroes = [
   ]
 
 //1  
-const superheroesNames = superheroes.map((superhero) => superhero.name);
+const superheroesNames = superheroes.map(superhero => superhero.name);
 
 console.log(superheroesNames);
 
 //2
-const lightSuperheroes = superheroes.filter((superhero) => superhero.weight < 190);
+const lightSuperheroes = superheroes.filter(superhero => superhero.weight < 190);
 
 console.log(lightSuperheroes);
 
 //3 
-const heavySuperheroes = superheroes.filter((superhero) => superhero.weight == 200).map (superhero => superhero.name);
+const heavySuperheroes = superheroes.filter(superhero => superhero.weight == 200).map (superhero => superhero.name);
 
 console.log(heavySuperheroes);
 
 //4
-const firstAppearance = superheroes.map((superhero) => superhero.name + ": " + superhero.first_appearance);
+const firstAppearance = superheroes.map(superhero => superhero.name + ": " + superhero.first_appearance);
 
 console.log("First appearance: " + firstAppearance);
 
@@ -146,7 +146,7 @@ console.log(weightDcComics);
 */
 
 //uitslag
-const weightMarvel = marvel.map(superhero => superhero.weight !== "unknown" ? parseInt(superhero.weight, 10): 0).reduce((total, superhero) => total + superhero, 0);
+const weightMarvel = marvel.map(superhero => superhero.weight !== "unknown" ? parseInt(superhero.weight): 0).reduce((total, superhero) => total + superhero, 0);
 
 console.log(weightMarvel);
 
@@ -155,7 +155,7 @@ console.log(weightMarvel);
 
 //uitslag
 const allHeroes = superheroes.map(superhero => {
-  const weight = superhero.weight !== "unknown" ? parseInt(superhero.weight) : 0;
+  const weight = superhero.weight !== "unknown" ? parseInt(superhero.weight): 0;
   superhero.weight = weight;
   return superhero;
 });
