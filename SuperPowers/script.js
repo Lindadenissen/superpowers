@@ -117,22 +117,22 @@ const lightSuperheroes = superheroes.filter((superhero) => superhero.weight < 19
 console.log(lightSuperheroes);
 
 //3 
-const heavySuperheroes = superheroes.filter((superhero) => superhero.weight > 200).map (superhero => superhero.name);
+const heavySuperheroes = superheroes.filter((superhero) => superhero.weight == 200).map (superhero => superhero.name);
 
 console.log(heavySuperheroes);
 
 //4
 const firstAppearance = superheroes.map((superhero) => superhero.name + ": " + superhero.first_appearance);
 
-console.log(firstAppearance);
+console.log("First appearance: " + firstAppearance);
 
 //5
 const dcComics = superheroes.filter(superhero => superhero.publisher === "DC Comics");
 
 const marvel = superheroes.filter((superhero) => superhero.publisher === "Marvel Comics");
 
-console.log(dcComics);
-console.log(marvel);
+console.log("DC Comics: ", dcComics);
+console.log("Marvel Comics: ", marvel);
 
 //6 
 const weightDcComics = superheroes.filter(superhero => superhero.publisher === "DC Comics").reduce((total, superhero) => total + (parseInt(superhero.weight)), 0);
@@ -140,13 +140,34 @@ const weightDcComics = superheroes.filter(superhero => superhero.publisher === "
 console.log(weightDcComics);
 
 //7
-//zit een unknown in daarom werkt het niet. 
+//zit een unknown in daarom werkt het niet.
 
-const weightMarvel = superheroes.filter(superhero => superhero.publisher === "Marvel Comics").reduce((total, superhero) => total + (parseInt(superhero.weight)), 0);
+/*const weightMarvel = superheroes.filter(superhero => superhero.publisher === "Marvel Comics").reduce((total, superhero) => total + superhero, 0);
+*/
+
+//uitslag
+const weightMarvel = marvel.map(superhero => superhero.weight !== "unknown" ? parseInt(superhero.weight, 10): 0).reduce((total, superhero) => total + superhero, 0);
 
 console.log(weightMarvel);
 
 //8
-const weightSuperheroes = superheroes.map((superhero) => parseInt(superhero.weight));
+//const weightSuperheroes = superheroes.map((superhero) => parseInt(superhero.weight));
 
-console.log(Math.max (weightSuperheroes));
+//uitslag
+const allHeroes = superheroes.map(superhero => {
+  const weight = superhero.weight !== "unknown" ? parseInt(superhero.weight) : 0;
+  superhero.weight = weight;
+  return superhero;
+});
+const heaviestHero = allHeroes.reduce(
+  (currentHeaviestHero, currentHero) => {
+    if (currentHero.weight > currentHeaviestHero.weight) {
+      return currentHero;
+    } else {
+      return currentHeaviestHero;
+    }
+  },
+  allHeroes[0]
+);
+
+console.log("heaviest hero is: ", heaviestHero);
