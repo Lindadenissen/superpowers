@@ -106,7 +106,6 @@ const superheroes = [
   }
   ]
 
-
 //1  
 const superheroesNames = superheroes.map((superhero) => superhero.name);
 
